@@ -9,4 +9,10 @@
 
     <a href="books.php">View Books</a>
 	<a href="search.php">Search Books</a>
+	{% if user_id is not null %}
+    <a href="logout.php" class="btn">Logout</a>
+{% else %}
+    <a href="login.php" class="btn">Login</a>
+    <a href="register.php" class="btn">Register</a>
+{% endif %}
 {% endblock %}
