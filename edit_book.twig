@@ -1,0 +1,32 @@
+{% extends "layout.twig" %}
+
+{% block title %}Edit Book{% endblock %}
+
+{% block content %}
+<h2>Update Book</h2>
+
+{% if message %}
+<p>{{ message }}</p>
+{% endif %}
+
+<form method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+    <input type="hidden" name="id" value="{{ book.id }}">
+
+    <label>Book Title:</label>
+    <input type="text" name="title" value="{{ book.title }}" required maxlength="255">
+
+    <label>Author:</label>
+    <input type="text" name="author" value="{{ book.author }}" required maxlength="255">
+
+    <label>Genre:</label>
+    <input type="text" name="genre" value="{{ book.genre }}" maxlength="100">
+
+    <label>Publication Year:</label>
+    <input type="number" name="publication_year" value="{{ book.publication_year }}" min="1901" max="2155">
+
+    <button type="submit">Save Changes</button>
+</form>
+
+<p><a href="books.php">Back to Books</a></p>
+{% endblock %}
