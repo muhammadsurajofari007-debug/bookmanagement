@@ -1,0 +1,29 @@
+{% extends "layout.twig" %}
+
+{% block title %}Add Book{% endblock %}
+
+{% block content %}
+<h2>Book Details</h2>
+
+<p>{{ message }}</p>
+
+<form method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+
+    <label>Book Title:</label>
+    <input type="text" name="title" required maxlength="255">
+
+    <label>Author:</label>
+    <input type="text" name="author" required maxlength="255">
+
+    <label>Genre:</label>
+    <input type="text" name="genre" maxlength="100">
+
+    <label>Publication Year:</label>
+    <input type="number" name="publication_year" min="1901" max="2155">
+
+    <button type="submit">Add Book</button>
+</form>
+
+<p><a href="books.php">Back to Books</a></p>
+{% endblock %}

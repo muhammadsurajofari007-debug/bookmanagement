@@ -1,0 +1,37 @@
+{% extends "layout.twig" %}
+
+{% block title %}Available Books{% endblock %}
+
+{% block content %}
+<h2>Available Books</h2>
+
+{% if books|length > 0 %}
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>Year</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for book in books %}
+    <tr>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.genre }}</td>
+        <td>{{ book.publication_year }}</td>
+        <td>
+            <a href="edit_book.php?id={{ book.id }}">Edit</a>
+            <a href="delete_book.php?id={{ book.id }}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No books have been added yet.</p>
+{% endif %}
+
+<a href="add_book.php" class="btn">Add New Book</a>
+<a href="index.php" class="btn">Back to Home</a>
+{% endblock %}
